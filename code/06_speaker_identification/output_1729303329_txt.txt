@@ -1,0 +1,1 @@
+['Gerät, ob eine bestimmte Funktion aktiviert werden soll, wenn erkannt wird, dass diese eine']

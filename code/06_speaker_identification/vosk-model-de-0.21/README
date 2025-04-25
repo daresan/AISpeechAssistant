@@ -1,0 +1,14 @@
+German model from Alpha Cephei
+
+Trained on Tuda-de, SWC, MAI-labs and Commonvoice data with 8khz, so should work with telephony.
+
+RNNLM/LM trained on large corpora
+
+%WER 11.33 [ 16653 / 147027, 3725 ins, 1338 del, 11590 sub ] exp/chain/tdnn/decode_test-cv-dev_rnnlm/wer_13_0.5
+%WER 11.99 [ 17448 / 145479, 3391 ins, 1768 del, 12289 sub ] exp/chain/tdnn/decode_test-cv-test_rnnlm/wer_14_0.5
+%WER 24.10 [ 2897 / 12023, 366 ins, 857 del, 1674 sub ] exp/chain/tdnn/decode_test-podcast_rnnlm/wer_11_0.0
+%WER 9.30 [ 6471 / 69600, 1403 ins, 670 del, 4398 sub ] exp/chain/tdnn/decode_test-tuda_rnnlm/wer_10_1.0
+
+Previous mdoel 0.6 results
+
+%WER 11.22 [ 7810 / 69600, 1667 ins, 824 del, 5319 sub ] exp/chain/tdnn/decode_test-tuda_rescore/wer_12_1.0

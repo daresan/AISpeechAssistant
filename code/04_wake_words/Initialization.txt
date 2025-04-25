@@ -1,16 +1,15 @@
 Dinge, die du hier lernen wirst:
-- Installation eines Wheel Files (Anpassung in der requirements.txt, einfach nur Dateiname rein)
-- Audioeingabe und -Verarbeitung über pyAudio
-- Erkennen eines Aktivierungsworts über Porcupine
-- Unterscheiden zwischen verschiedenen Aktivierungswörtern
+- Anlegen einer Konfigurationsdatei im YAML-Format
+- Globale Variablen in Klassen verwenden
+- Was ist YAML?
+- Einlesen einer Konfigurationsdatei
+- Speichern der Sprache
+- Verwenden einzelner Konfigurationen
 
-conda create -n 04_wake_words python=3.7
-
-Manueller Download von pyaudio für windows:
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio->PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl
+conda create -n 03_configuration_management python=3.8
 
 Hint:
 Raspberry Pi supports python up to 3.6:
-conda create -n 04_wake_words python=3.6
+conda create -n 03_configuration_management python=3.6
 
-conda activate 04_wake_words
+conda activate 03_configuration_management

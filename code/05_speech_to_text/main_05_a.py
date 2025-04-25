@@ -9,12 +9,25 @@ import sys
 
 from vosk import Model, SpkModel, KaldiRecognizer
 import json
-import text2numde 
+import text2numde
+
+sys.path.append(os.path.dirname(__file__))
+print(os.path.dirname(__file__))
 
 from TTS import Voice
+from Imagine import ImagineVideo
+from GMAILFUNC import GMAILFUNC
+
 import multiprocessing
+#dill.Pickler.dumps, dill.Pickler.loads = dill.dumps, dill.loads
+#multiprocessing.reduction.ForkingPickler = dill.Pickler
+#multiprocessing.reduction.dump = dill.dump
+#multiprocessing.queues._ForkingPickler = dill.Pickler
 
 CONFIG_FILE = "config.yml"
+SAMPLE_RATE = 16000
+FRAME_LENGTH = 512
+
 
 class VoiceAssistant():
 
@@ -31,10 +44,10 @@ class VoiceAssistant():
 		else:
 			logger.debug("Konfiguration konnte nicht gelesen werden.")
 			sys.exit(1)
-		language = self.cfg['assistant']['language']
-		if not language:
-			language = "de"
-		logger.info("Verwende Sprache {}", language)
+		self.language = self.cfg['assistant']['language']
+		if not self.language:
+			self.language = "de"
+		logger.info("Verwende Sprache {}", self.language)
 			
 		logger.debug("Initialisiere Wake Word Erkennung...")
 		self.wake_words = self.cfg['assistant']['wakewords']
@@ -58,23 +71,29 @@ class VoiceAssistant():
 
 		logger.info("Initialisiere Sprachausgabe...")
 		self.tts = Voice()
-		voices = self.tts.get_voice_keys_by_language(language)
+		voices = self.tts.get_voice_keys_by_language(self.language)
 		if len(voices) > 0:
 			logger.info('Stimme {} gesetzt.', voices[0])
 			self.tts.set_voice(voices[0])
 		else:
 			logger.warning("Es wurden keine Stimmen gefunden.")
-		self.tts.say("Initialisierung abgeschlossen")
 		logger.debug("Sprachausgabe initialisiert")
+		
+		logger.info("Initialisiere Imagination...")
+		print(ImagineVideo)
+		self.ttv = ImagineVideo()
 		
 		# Initialisiere Spracherkennung
 		logger.info("Initialisiere Spracherkennung...")
-		stt_model = Model('./vosk-model-de-0.6')
+		stt_model = Model('./vosk-model-de-0.21')
 		speaker_model = SpkModel('./vosk-model-spk-0.4')
-		self.rec = KaldiRecognizer(stt_model, speaker_model, 16000)
+		# rec = KaldiRecognizer(model, wf.getframerate(), spk_model)
+		self.rec = KaldiRecognizer(stt_model, 16000, speaker_model)
 		# Hört der Assistent gerade auf einen Befehl oder wartet er auf ein Wake Word?
 		self.is_listening = False
+		self.imagined = True
 		logger.info("Initialisierung der Spracherkennung abgeschlossen.")
+		self.tts.say("Die Initialisierung ist abgeschlossen.")
 			
 	def run(self):
 		logger.info("VoiceAssistant Instanz wurde gestartet.")
@@ -87,6 +106,7 @@ class VoiceAssistant():
 				if keyword_index >= 0:
 					logger.info("Wake Word {} wurde verstanden.", self.wake_words[keyword_index])
 					self.is_listening = True
+					self.imagined = False
 					
 				# Spracherkennung
 				if self.is_listening:
@@ -95,8 +115,32 @@ class VoiceAssistant():
 						
 						# Hole das Resultat aus dem JSON Objekt
 						sentence = recResult['text']
-						logger.debug('Ich habe verstanden "{}"', sentence)
 
+						logger.info("Initialisiere Sprachausgabe...")
+						self.tts = Voice()
+						voices = self.tts.get_voice_keys_by_language(self.language)
+						if len(voices) > 0:
+							logger.info('Stimme {} gesetzt.', voices)
+							self.tts.set_voice(voices[0])
+						else:
+							logger.warning("Es wurden keine Stimmen gefunden.")
+						
+						if sentence.lower().startswith("kalliope"):
+							sentence = sentence [8:] # Schneide Kalliope am Anfang des Satzes weg
+							sentence = sentence.strip() # Entferne Leerzeichen am Anfang und Ende des Satzes
+							logger.info("Befehl Kalliope verstanden. Dein Satz: {}.", sentence)
+							self.imagined = True
+							#logger.debug('Ich habe verstanden "{}"', sentence)
+						
+						if self.imagined:
+							print("Jetzt stelle ich es mir vor...")
+							self.ttv = ImagineVideo()
+							self.ttv.imagine(sentence)
+							self.imagined = False
+							self.tts.say("Ich habe mir '" + sentence + "' vorgestellt.")
+						else:
+							logger.debug('Ich habe verstanden "{}"', sentence)
+						
 						self.is_listening = False
 					
 		except KeyboardInterrupt:

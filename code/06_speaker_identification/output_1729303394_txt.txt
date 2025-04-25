@@ -1,0 +1,1 @@
+['der Regel über einen einfachen Befehl, der automatisch die Funktion Einkaufsliste aktiviert.']

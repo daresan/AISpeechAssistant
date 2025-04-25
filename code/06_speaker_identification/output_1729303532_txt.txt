@@ -1,0 +1,1 @@
+['Voraussetzung ist, dass man sich ein Framework schafft, das Stimme versteht, doch']

@@ -1,0 +1,159 @@
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 153, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 41, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 153, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 41, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 153, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 41, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 174, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 42, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 174, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 42, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 175, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 43, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 176, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 44, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 176, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 44, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 176, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 44, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 176, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 44, in __init__
+    if not self.language:
+AttributeError: 'VoiceAssistant' object has no attribute 'language'
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 174, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 51, in __init__
+    self.porcupine = pvporcupine.create(keywords=self.wake_words)
+NameError: name 'pvporcupine' is not defined
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 174, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 51, in __init__
+    self.porcupine = pvporcupine.create(keywords=self.wake_words)
+NameError: name 'pvporcupine' is not defined
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\encoder\inference.py:33: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\vocoder\inference.py:36: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 175, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 81, in __init__
+    self.ttv = ImagineVideo()
+  File "C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\Imagine.py", line 21, in __init__
+    self.pipe = DiffusionPipeline.from_pretrained("./zeroscope_v2_576w", torch_dtype=torch.float16)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\diffusers\pipelines\pipeline_utils.py", line 699, in from_pretrained
+    cached_folder = cls.download(
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\diffusers\pipelines\pipeline_utils.py", line 1291, in download
+    info = model_info(pretrained_model_name, token=token, revision=revision)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 160, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: './zeroscope_v2_576w'.
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\encoder\inference.py:33: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\vocoder\inference.py:36: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 179, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 81, in __init__
+    self.ttv = ImagineVideo()
+  File "C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\Imagine.py", line 21, in __init__
+    self.pipe = DiffusionPipeline.from_pretrained("./zeroscope_v2_576w", torch_dtype=torch.float16)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\diffusers\pipelines\pipeline_utils.py", line 699, in from_pretrained
+    cached_folder = cls.download(
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\diffusers\pipelines\pipeline_utils.py", line 1291, in download
+    info = model_info(pretrained_model_name, token=token, revision=revision)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 160, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: './zeroscope_v2_576w'.
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\encoder\inference.py:33: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\vocoder\inference.py:36: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+Traceback (most recent call last):
+  File "main_06_b_wake_word.py", line 179, in <module>
+    va = VoiceAssistant()
+  File "main_06_b_wake_word.py", line 81, in __init__
+    self.ttv = ImagineVideo()
+  File "C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\Imagine.py", line 21, in __init__
+    self.pipe = DiffusionPipeline.from_pretrained("./zeroscope_v2_576w", torch_dtype=torch.float16)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\diffusers\pipelines\pipeline_utils.py", line 699, in from_pretrained
+    cached_folder = cls.download(
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\diffusers\pipelines\pipeline_utils.py", line 1291, in download
+    info = model_info(pretrained_model_name, token=token, revision=revision)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "C:\Users\taffe\anaconda3\envs\AIAssistant\lib\site-packages\huggingface_hub\utils\_validators.py", line 160, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: './zeroscope_v2_576w'.
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\encoder\inference.py:33: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\vocoder\inference.py:36: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+Loading pipeline components...:   0%|                                                            | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  40%|████████████████████▊                               | 2/5 [00:00<00:00,  5.35it/s]Loading pipeline components...:  60%|███████████████████████████████▏                    | 3/5 [00:00<00:00,  5.63it/s]Loading pipeline components...: 100%|████████████████████████████████████████████████████| 5/5 [00:03<00:00,  1.23it/s]Loading pipeline components...: 100%|████████████████████████████████████████████████████| 5/5 [00:03<00:00,  1.55it/s]
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\encoder\inference.py:33: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\vocoder\inference.py:36: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+Loading pipeline components...:   0%|                                                            | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  40%|████████████████████▊                               | 2/5 [00:00<00:00,  8.91it/s]Loading pipeline components...:  60%|███████████████████████████████▏                    | 3/5 [00:00<00:00,  4.82it/s]Loading pipeline components...: 100%|████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.08s/it]Loading pipeline components...: 100%|████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.19it/s]
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\encoder\inference.py:33: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+C:\Users\taffe\Documents\GitHub\AISpeechAssistant\code\06_speaker_identification\vocoder\inference.py:36: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(weights_fpath, _device)
+Loading pipeline components...:   0%|                                                            | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  20%|██████████▍                                         | 1/5 [00:02<00:09,  2.41s/it]Loading pipeline components...:  60%|███████████████████████████████▏                    | 3/5 [00:02<00:01,  1.38it/s]Loading pipeline components...:  80%|█████████████████████████████████████████▌          | 4/5 [00:03<00:00,  1.64it/s]Loading pipeline components...: 100%|████████████████████████████████████████████████████| 5/5 [00:03<00:00,  1.62it/s]

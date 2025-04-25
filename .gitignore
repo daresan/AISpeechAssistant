@@ -133,3 +133,11 @@ vosk-model-de-0.6
 vosk-model-spk-0.4
 _merger.template
 log.txt
+*.wav
+*.pt
+*.png
+*.mp4
+code/06_speaker_identification/vosk-model-de-0.21/rescore/G.carpa
+code/06_speaker_identification/vosk-model-de-0.21/rnnlm/word_feats.txt
+*.fst
+*.npy

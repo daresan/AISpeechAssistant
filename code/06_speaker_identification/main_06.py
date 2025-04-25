@@ -14,6 +14,7 @@ import numpy as np
 from usermgmt import UserMgmt
 
 from TTS import Voice
+from GMAILFUNC import GMAILFUNC
 import multiprocessing
 
 CONFIG_FILE = "config.yml"
@@ -21,6 +22,8 @@ CONFIG_FILE = "config.yml"
 class VoiceAssistant():
 
 	def __init__(self):
+		logger.info("Inititalisiere Gmail")
+		self.gmail = GMAILFUNC()
 		logger.info("Initialisiere VoiceAssistant...")
 		
 		logger.debug("Lese Konfiguration...")
@@ -70,9 +73,9 @@ class VoiceAssistant():
 		logger.debug("Sprachausgabe initialisiert")
 		
 		logger.info("Initialisiere Spracherkennung...")
-		stt_model = Model('./vosk-model-de-0.6')
+		stt_model = Model('./vosk-model-de-0.21')
 		speaker_model = SpkModel('./vosk-model-spk-0.4')
-		self.rec = KaldiRecognizer(stt_model, speaker_model, 16000)
+		self.rec = KaldiRecognizer(stt_model, 16000, speaker_model)
 		self.is_listening = False
 		logger.info("Initialisierung der Spracherkennung abgeschlossen.")
 		
@@ -103,9 +106,24 @@ class VoiceAssistant():
 		return bestSpeaker		
 			
 	def run(self):
+		check_mail = True
 		logger.info("VoiceAssistant Instanz wurde gestartet.")
 		try:
 			while True:
+				if check_mail:
+					# get the Gmail API service
+					service = self.gmail.gmail_authenticate()
+					# test send email
+					self.gmail.send_message(service, "daresan21@gmail.com", "Message from Roy Batty Assistant.", 
+								"Hello Daniel! This is your AI Assistant Roy Batty. Have a nice day! Yours, Roy", ["TTS.py", "main_06.py"])
+				
+					# get emails that match the query you specify
+					results = self.gmail.search_messages(service, "Simsalabim")
+					print(f"Found {len(results)} results.")
+					# for each email matched, read it (output plain/text to console & save HTML and attachments)
+					for msg in results:
+						self.gmail.read_message(service, msg)
+					check_mail = False
 			
 				pcm = self.audio_stream.read(self.porcupine.frame_length)
 				pcm_unpacked = struct.unpack_from("h" * self.porcupine.frame_length, pcm)		

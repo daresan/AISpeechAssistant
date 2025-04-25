@@ -1,0 +1,1 @@
+['Ich wollte eine Offline-Variante schaffen, die nur für die nötigsten Aufrufe eine Internetverbindung herstellt.']

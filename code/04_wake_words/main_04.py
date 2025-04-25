@@ -2,7 +2,7 @@ from loguru import logger
 import yaml
 import time
 import sys
-
+#import sounddevice as sd
 import pvporcupine
 import pyaudio
 import struct
@@ -62,6 +62,20 @@ class VoiceAssistant():
 			logger.debug('id: {}, name: {}', self.pa.get_device_info_by_index(i).get('index'),
 				self.pa.get_device_info_by_index(i).get('name'))
 		
+		# Initialisiere TTS
+		logger.info("Initialisiere Sprachausgabe...")
+		self.tts = Voice()
+		# self.tts.set_voice('Daniel-germanvoice-DE-de')
+		voices = self.tts.get_voice_keys_by_language(language)
+		if len(voices) > 0:
+			logger.info('Stimme {} gesetzt.', voices)
+			self.tts.set_voice(voices[0])
+		else:
+			logger.warning("Es wurden keine Stimmen gefunden.")
+		# 
+		# self.tts.say("Die Initialisierung ist abgeschlossen.")
+		logger.debug("Sprachausgabe initialisiert")
+		
 		# Wir öffnen einen (mono) Audio-Stream, der Audiodaten einer bestimmten Länge
 		# von einem bestimmten Device einliest.
 		self.audio_stream = self.pa.open(
@@ -72,29 +86,34 @@ class VoiceAssistant():
 			frames_per_buffer=self.porcupine.frame_length,
 			input_device_index=0)
 		logger.debug("Audiostream geöffnet.")
-
-		# Initialisiere TTS
-		logger.info("Initialisiere Sprachausgabe...")
-		self.tts = Voice()
-		voices = self.tts.get_voice_keys_by_language(language)
-		if len(voices) > 0:
-			logger.info('Stimme {} gesetzt.', voices[0])
-			self.tts.set_voice(voices[0])
-		else:
-			logger.warning("Es wurden keine Stimmen gefunden.")
-		self.tts.say("Initialisierung abgeschlossen")
-		logger.debug("Sprachausgabe initialisiert")
 		
 	def run(self):
+		logger.info("Anwendung wurde gestartet. Warte auf Eingabe.")
+		language = self.cfg['assistant']['language']
 		# Versuche folgenden Code auszuführen. Sollte eine Ausnahme auftreten, wird der except Block behandelt.
 		try:
 			while True:
-			
 				pcm = self.audio_stream.read(self.porcupine.frame_length)
 				pcm_unpacked = struct.unpack_from("h" * self.porcupine.frame_length, pcm)		
 				keyword_index = self.porcupine.process(pcm_unpacked)
 				if keyword_index >= 0:
-					logger.info("Wake Word {} wurde verstanden.", self.wake_words[keyword_index])
+					info = "Das Aufweckwort " + self.wake_words[keyword_index] + " wurde erkannt."
+					#logger.info("Wake Word {} wurde erkannt.", self.wake_words[keyword_index])
+					# Initialisiere TTS
+					#logger.info("Initialisiere Sprachausgabe...")
+					self.tts = Voice()
+					# self.tts.set_voice('Daniel-germanvoice-DE-de')
+					voices = self.tts.get_voice_keys_by_language(language)
+					if len(voices) > 0:
+						logger.info('Stimme {} gesetzt.', voices)
+						self.tts.set_voice(voices[0])
+					else:
+						logger.warning("Es wurden keine Stimmen gefunden.")
+					self.tts.say(info)
+					logger.info(info)
+					logger.info("Bereit für Eingabe.")
+					#logger.debug("Sprachausgabe initialisiert")
+					
 					
 		# Der Except Block ist hier in seiner Behandlung eingeschränkt auf den Typ KeyboardInterrupt,
 		# also falls der Benutzer die Ausführung des Programms mit STRG+C unterbricht.
@@ -112,12 +131,17 @@ class VoiceAssistant():
 				
 			if self.pa is not None:
 				self.pa.terminate()
+			
+			if self.tts is not None:
+				self.tts.stop()
 
 if __name__ == '__main__':
+	multiprocessing.freeze_support()
+	sys.stdout = open('x.out', 'a')
+	sys.stderr = open('x.err', 'a')
 	multiprocessing.set_start_method('spawn')
 
 	# VoiceAssistant muss außerhalb des try-except-finally Blocks initialisiert werden,
 	# da die Instanz sonst nicht in finally bekannt ist.
 	va = VoiceAssistant()
-	logger.info("Anwendung wurde gestartet")
 	va.run()

@@ -1,0 +1,73 @@
+set language
+set language
+set language
+set language
+set language
+set language
+set language
+set language
+set language
+Loaded encoder "german_encoder.pt" trained to step 106501
+Synthesizer using device: cuda
+Building Wave-RNN
+Trainable Parameters: 4.481M
+Loading model weights at vocoder\saved_models\german_vocoder\german_vocoder.pt
+VoiceID was set: Daniel-germanvoice-DE-de
+<class 'Imagine.ImagineVideo'>
+Allocated Memory:  24369152
+Loaded encoder "german_encoder.pt" trained to step 106501
+Synthesizer using device: cuda
+Building Wave-RNN
+Trainable Parameters: 4.481M
+Loading model weights at vocoder\saved_models\german_vocoder\german_vocoder.pt
+VoiceID was set: Daniel-germanvoice-DE-de
+<class 'Imagine.ImagineVideo'>
+Allocated Memory:  24369152
+Loaded encoder "german_encoder.pt" trained to step 106501
+Synthesizer using device: cuda
+Building Wave-RNN
+Trainable Parameters: 4.481M
+Loading model weights at vocoder\saved_models\german_vocoder\german_vocoder.pt
+VoiceID was set: Daniel-germanvoice-DE-de
+<class 'Imagine.ImagineVideo'>
+Allocated Memory:  24369152
+Loaded encoder "german_encoder.pt" trained to step 106501
+Synthesizer using device: cuda
+Building Wave-RNN
+Trainable Parameters: 4.481M
+Loading model weights at vocoder\saved_models\german_vocoder\german_vocoder.pt
+VoiceID was set: Daniel-germanvoice-DE-de
+<class 'Imagine.ImagineVideo'>
+Allocated Memory:  24369152
+Found 6 results.
+To: daresan21@gmail.com
+From: roy.batty.assistant@gmail.com
+Subject: Message from Roy Batty Assistant.
+Date: Wed, 16 Oct 2024 19:19:21 -0500
+Extract attachments? Loaded encoder "german_encoder.pt" trained to step 106501
+Synthesizer using device: cuda
+Building Wave-RNN
+Trainable Parameters: 4.481M
+Loading model weights at vocoder\saved_models\german_vocoder\german_vocoder.pt
+VoiceID was set: Daniel-germanvoice-DE-de
+<class 'Imagine.ImagineVideo'>
+Allocated Memory:  24369152
+Found 7 results.
+To: daresan21@gmail.com
+From: roy.batty.assistant@gmail.com
+Subject: Message from Roy Batty Assistant.
+Date: Wed, 16 Oct 2024 17:38:43 -0700
+Extract attachments? Loaded encoder "german_encoder.pt" trained to step 106501
+Synthesizer using device: cuda
+Building Wave-RNN
+Trainable Parameters: 4.481M
+Loading model weights at vocoder\saved_models\german_vocoder\german_vocoder.pt
+VoiceID was set: Daniel-germanvoice-DE-de
+<class 'Imagine.ImagineVideo'>
+Allocated Memory:  24369152
+Found 8 results.
+To: daresan21@gmail.com
+From: roy.batty.assistant@gmail.com
+Subject: Message from Roy Batty Assistant.
+Date: Wed, 16 Oct 2024 19:42:52 -0500
+Extract attachments? 

@@ -1,0 +1,1 @@
+['Gründe, warum ich mich darangesetzt habe, einen eigenen Sprachassistenten zu schreiben.']

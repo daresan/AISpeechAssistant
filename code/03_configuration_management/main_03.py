@@ -1,6 +1,7 @@
 from loguru import logger
 import yaml
 import sys
+import pyttsx3
 
 from TTS import Voice
 import multiprocessing
@@ -46,6 +47,7 @@ class VoiceAssistant():
 	
 	def run(self):
 		logger.info("VoiceAssistant Instanz wurde gestartet.")
+		# self.tts.say("VoiceAssistant Instanz wurde gestartet.")
 
 if __name__ == '__main__':
 	# Für Windows nutzen wir spawn, nicht fork

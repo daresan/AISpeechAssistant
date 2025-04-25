@@ -34,8 +34,8 @@ class VoiceAssistant():
 			logger.debug("Konfiguration konnte nicht gelesen werden.")
 			sys.exit(1)
 		language = self.cfg['assistant']['language']
-		if not language:
-			language = "de"
+		if not self.language:
+			self.language = "de"
 		logger.info("Verwende Sprache {}", language)
 		
 		logger.debug("Initialisiere Audioeingabe...")
@@ -52,25 +52,26 @@ class VoiceAssistant():
 
 		logger.info("Initialisiere Sprachausgabe...")
 		self.tts = Voice()
-		voices = self.tts.get_voice_keys_by_language(language)
+		voices = self.tts.get_voice_keys_by_language(self.language)
 		if len(voices) > 0:
-			logger.info('Stimme {} gesetzt.', voices[0])
+			logger.info('Stimme {} gesetzt.', voices)
 			self.tts.set_voice(voices[0])
 		else:
 			logger.warning("Es wurden keine Stimmen gefunden.")
-		self.tts.say("Initialisierung abgeschlossen")
+		# self.tts.say("Initialisierung abgeschlossen")
 		logger.debug("Sprachausgabe initialisiert")
 		
 		# Initialisiere Spracherkennung
 		logger.info("Initialisiere Spracherkennung...")
-		stt_model = Model('./vosk-model-de-0.6')
+		stt_model = Model('./vosk-model-de-0.21')
 		speaker_model = SpkModel('./vosk-model-spk-0.4')
-		self.rec = KaldiRecognizer(stt_model, speaker_model, 16000)
+		self.rec = KaldiRecognizer(stt_model, 16000, speaker_model)
 
 		logger.info("Initialisierung der Spracherkennung abgeschlossen.")
 			
 	def run(self):
 		logger.info("VoiceAssistant Instanz wurde gestartet.")
+		
 		try:
 			while True:
 			
@@ -81,12 +82,34 @@ class VoiceAssistant():
 						
 					# Hole das Resultat aus dem JSON Objekt
 					sentence = recResult['text']
+					#language = self.cfg['assistant']['language']
+					if not self.language:
+						self.language = "de"
+					
+					if len(sentence) > 0:	
+						if sentence.lower().startswith("bumblebee"):
+							sentence = sentence [9:] # Schneide Kevin am Anfang des Satzes weg
+							sentence = sentence.strip() # Entferne Leerzeichen am Anfang und Ende des Satzes
+							logger.info("Prozessiere Befehl {}.", sentence)
+							
+						
+							#logger.info("Initialisiere Sprachausgabe...")
+							self.tts = Voice()
+							voices = self.tts.get_voice_keys_by_language(language)
+							if len(voices) > 0:
+								logger.info('Stimme {} gesetzt.', voices)
+								self.tts.set_voice(voices[0])
+								self.tts.say(sentence)
+							else:
+								logger.warning("Es wurden keine Stimmen gefunden.")
+							
+										
 					logger.debug('Ich habe verstanden "{}"', sentence)
 					
-					if sentence.lower().startswith("kevin"):
-						sentence = sentence [5:] # Schneide Kevin am Anfang des Satzes weg
-						sentence = sentence.strip() # Entferne Leerzeichen am Anfang und Ende des Satzes
-						logger.info("Prozessiere Befehl {}.", sentence)
+					#time.sleep(round(500.0))
+					#self.tts.stop()
+					
+					
 					
 		except KeyboardInterrupt:
 			logger.debug("Per Keyboard beendet")
@@ -98,8 +121,14 @@ class VoiceAssistant():
 				
 			if self.pa is not None:
 				self.pa.terminate()
+			
+			if self.tts is not None:
+				self.tts.stop()
 
 if __name__ == '__main__':
+	multiprocessing.freeze_support()
+	sys.stdout = open('x.out', 'a')
+	sys.stderr = open('x.err', 'a')
 	multiprocessing.set_start_method('spawn')
 
 	va = VoiceAssistant()
